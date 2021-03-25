@@ -22,7 +22,12 @@ object WallService {
             }
         }
         if (editIndex != null) {
-            posts[editIndex!!] = newPost
+            val postForWrite = newPost.copy(
+                id = posts[editIndex!!].id,
+                ownerId = posts[editIndex!!].ownerId,
+                date = posts[editIndex!!].date
+            )
+            posts[editIndex!!] = postForWrite
             return true
         }
         return false
