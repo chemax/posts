@@ -9,9 +9,9 @@ data class Post(
     var text: String,
     val replyOwnerId: Int,
     val replyPostId: Int,
-    val friendsOnly: Boolean,
-    val comments: Comments,
-    val copyright: Copyright,
+    val friendsOnly: Boolean?,
+    val comments: Comments?,
+    val copyright: Copyright?,
     val likes: Likes,
     val reposts: Reposts,
     val views: Views,
@@ -24,6 +24,7 @@ data class Post(
     val markedAsAds: Boolean = false,
     val isFavorite: Boolean = false,
     val donut: Donut? = null,
-    val postponedId: Int = 0
+    val postponedId: Int = 0,
+    var attachments: List<Attachment>?
 ) {
 }

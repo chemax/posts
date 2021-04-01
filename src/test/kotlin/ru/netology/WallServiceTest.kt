@@ -21,7 +21,8 @@ class WallServiceTest {
         Views(500),
         "test",
         0,
-        donut = null
+        donut = null,
+        attachments = null
     )
 
     @org.junit.Test
