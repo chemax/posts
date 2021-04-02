@@ -1,4 +1,4 @@
 package ru.netology
 
-data class WikiPage(override val type: String, override val attach: WikiAttachment) : Attachment {
+data class WikiPage(override val type: String = "wikiPage", val wikiPage: WikiAttachment) : Attachment {
 }
