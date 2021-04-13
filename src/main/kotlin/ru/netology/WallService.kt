@@ -2,6 +2,24 @@ package ru.netology
 
 object WallService {
     private var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
+
+    fun createComment(comment: Comment) {
+        if (posts.isNotEmpty()) {
+            var search: Boolean = false
+            posts.forEachIndexed { index, post ->
+                if (post.id == comment.postId) {
+                    search = true
+                }
+            }
+            if (search) {
+                comments += comment
+            }
+            else {
+                throw PostNotFoundException("${comment.postId}")
+            }
+        }
+    }
 
     fun add(post: Post): Post {
         if (posts.isNotEmpty()) {
