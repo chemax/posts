@@ -1,10 +1,11 @@
 package ru.netology
 
 import org.junit.Assert.*
+import org.junit.Test
 
 class WallServiceTest {
 
-    val basePost = Post(
+    private val basePost = Post(
         0,
         0,
         0,
@@ -14,7 +15,7 @@ class WallServiceTest {
         0,
         0,
         false,
-        Comments(),
+        null,
         Copyright(0, "http://enot", "enot", "enot"),
         Likes(10, false, true, true),
         Reposts(2, false),
@@ -46,5 +47,41 @@ class WallServiceTest {
         updatedPost.id = 0
         updatedPost.text = "44444"
         assert(!WallService.update(updatedPost))
+    }
+
+    @org.junit.Test
+    fun addCommentTest() {
+        val comment = Comment(
+            1,
+            1,
+            55,
+            0,
+            "sample text",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
+        WallService.createComment(comment)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        val comment = Comment(
+            1,
+            2,
+            55,
+            0,
+            "sample text",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        )
+        WallService.createComment(comment)
     }
 }
